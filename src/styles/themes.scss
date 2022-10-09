@@ -2,5 +2,13 @@
 
 :root {
   --body-color: #{$gray-100};
+  --body-color-soft: #{$gray-50};
   --body-background-color: #{$gray-10};
+
+  --layout-background-color: #{$white};
+  --layout-box-shadow-color: #{rgba($gray-50, 0.25)};
+
+  --switch-background-color: #{$gray-30};
+  --switch-handle-background-color: #{$white};
+  --switch-handle-box-shadow-color: #{rgba($gray-50, 0.5)};
 }
