@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'themes';
+
+body {
+  color: var(--body-color);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  background-color: var(--body-background-color);
+
+  ::selection {
+    color: var(--body-background-color);
+    background-color: var(--body-color);
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  input {
+    color: currentColor;
+    background: transparent;
+    appearance: none;
+    outline: none;
+    border: none;
+  }
+}
