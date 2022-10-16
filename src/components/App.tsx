@@ -6,11 +6,14 @@ import '@styles/styles.scss'
 import type { FC } from 'react'
 import Layout from '@components/Layout'
 import { ThemeProvider } from '@context/ThemeContext'
+import { ColorProvider } from '@context/ColorContext'
 
 const App: FC = () => {
   return (
     <ThemeProvider>
-      <Layout />
+      <ColorProvider>
+        <Layout />
+      </ColorProvider>
     </ThemeProvider>
   )
 }
