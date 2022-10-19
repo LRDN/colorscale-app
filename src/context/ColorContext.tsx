@@ -7,6 +7,11 @@ type ProviderProps = {
 }
 
 export type ColorProps = {
+  steps: {
+    majorSteps: number
+    addMinorSteps?: boolean
+    startAtZero?: boolean
+  }
   hue: { range: number[]; curve: number[] }
   saturation: { range: number[]; curve: number[] }
   brightness: { range: number[]; curve: number[] }
@@ -15,6 +20,7 @@ export type ColorProps = {
 const ColorContext = createContext<Record<string, any>>({})
 const ColorProvider: FC<ProviderProps> = ({ children }) => {
   const defaultColor = {
+    steps: { majorSteps: 10 },
     hue: { range: [220, 220], curve: [0.75, 0.25, 0.25, 0.75] },
     saturation: { range: [100, 100], curve: [0.75, 0.25, 0.25, 0.75] },
     brightness: { range: [80, 40], curve: [0.75, 0.25, 0.25, 0.75] },
