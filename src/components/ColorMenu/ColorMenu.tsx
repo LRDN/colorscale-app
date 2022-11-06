@@ -1,6 +1,7 @@
 import clsx from 'clsx'
-import { Plus } from 'react-feather'
+import Button from '@components/Button'
 import type { FC, HTMLProps } from 'react'
+import { Plus, Download } from 'react-feather'
 import { ColorContext } from '@context/ColorContext'
 import ColorMenuItem from '@components/ColorMenuItem'
 import type { ColorProps } from '@context/ColorContext'
@@ -59,6 +60,11 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
           )
         })}
       </div>
+      <footer className={styles.colorMenu__footer}>
+        <Button>
+          <Download /> Export Colors
+        </Button>
+      </footer>
     </div>
   )
 }

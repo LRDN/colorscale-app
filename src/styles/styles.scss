@@ -23,7 +23,8 @@ body {
     font-weight: var(--font-weight-bold);
   }
 
-  input {
+  input,
+  button {
     color: currentColor;
     background: transparent;
     appearance: none;

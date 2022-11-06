@@ -2,7 +2,7 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  padding: var(--spacing-x-large);
+  padding: var(--spacing-x-large) var(--spacing-x-large) 0;
 
   &__header {
     display: flex;
@@ -23,8 +23,9 @@
     font-weight: var(--font-weight-bold);
 
     svg {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.125rem;
+      height: 1.125rem;
+      stroke-width: 0.1875rem;
       margin-left: var(--spacing-xx-small);
     }
   }
@@ -38,5 +39,9 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  &__footer {
+    margin-top: var(--spacing-medium);
   }
 }
