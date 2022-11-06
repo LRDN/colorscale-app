@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
-import { createContext, useState } from 'react'
 import useLocalStorage from '@hooks/useLocalStorage'
+import { createContext, useEffect, useState } from 'react'
 
 type ProviderProps = {
   children?: ReactNode
@@ -28,6 +28,12 @@ const ColorProvider: FC<ProviderProps> = ({ children }) => {
 
   const [activeColor, setActiveColor] = useState(0)
   const [colors, setColors] = useLocalStorage('colors', [defaultColor])
+
+  useEffect(() => {
+    if (!colors[activeColor]) {
+      setActiveColor(activeColor - 1)
+    }
+  }, [colors, activeColor])
 
   return (
     <ColorContext.Provider

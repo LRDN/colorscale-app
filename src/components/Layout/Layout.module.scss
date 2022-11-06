@@ -12,6 +12,8 @@
   }
 
   &__sidebar {
+    display: flex;
     width: 22.5rem;
+    flex-direction: column;
   }
 }
