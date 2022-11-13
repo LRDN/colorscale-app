@@ -2,6 +2,7 @@
 @import 'themes';
 
 body {
+  overflow: hidden;
   color: var(--body-color);
   font-family: 'Inter', sans-serif;
   font-size: var(--font-size-normal);

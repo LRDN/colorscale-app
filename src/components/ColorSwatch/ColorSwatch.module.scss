@@ -1,0 +1,22 @@
+.colorSwatch {
+  overflow: hidden;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  border-radius: var(--border-radius-x-large);
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-x-large);
+    font-size: var(--font-size-medium);
+    color: var(--color-swatch-item-color);
+
+    &--dark {
+      color: var(--color-swatch-item-dark-color);
+    }
+  }
+}

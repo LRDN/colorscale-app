@@ -5,6 +5,7 @@ import '@styles/styles.scss'
 
 import type { FC } from 'react'
 import Layout from '@components/Layout'
+import ColorSwatch from '@components/ColorSwatch'
 import { ThemeProvider } from '@context/ThemeContext'
 import { ColorProvider } from '@context/ColorContext'
 
@@ -12,7 +13,9 @@ const App: FC = () => {
   return (
     <ThemeProvider>
       <ColorProvider>
-        <Layout />
+        <Layout>
+          <ColorSwatch />
+        </Layout>
       </ColorProvider>
     </ThemeProvider>
   )

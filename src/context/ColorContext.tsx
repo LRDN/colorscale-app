@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 import useLocalStorage from '@hooks/useLocalStorage'
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useMemo, useState } from 'react'
 
 type ProviderProps = {
   children?: ReactNode
@@ -21,15 +21,15 @@ const ColorContext = createContext<Record<string, any>>({})
 const ColorProvider: FC<ProviderProps> = ({ children }) => {
   const defaultColor = {
     steps: { majorSteps: 10 },
-    hue: { range: [220, 220], curve: [0.75, 0.25, 0.25, 0.75] },
-    saturation: { range: [100, 100], curve: [0.75, 0.25, 0.25, 0.75] },
-    brightness: { range: [80, 40], curve: [0.75, 0.25, 0.25, 0.75] },
+    hue: { range: [230, 230], curve: [0.75, 0.25, 0.25, 0.75] },
+    saturation: { range: [80, 100], curve: [0.75, 0.25, 0.25, 0.75] },
+    brightness: { range: [100, 40], curve: [0.75, 0.25, 0.25, 0.75] },
   }
 
   const [activeColor, setActiveColor] = useState(0)
   const [colors, setColors] = useLocalStorage('colors', [defaultColor])
 
-  useEffect(() => {
+  useMemo(() => {
     if (!colors[activeColor]) {
       setActiveColor(activeColor - 1)
     }

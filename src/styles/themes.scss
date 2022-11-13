@@ -3,35 +3,39 @@
 :root {
   --body-color: #{$gray-100};
   --body-color-soft: #{$gray-50};
-  --body-background-color: #{$gray-10};
+  --body-background-color: #{$white};
 
   --button-color: #{$white};
   --button-background-color: #{$gray-100};
 
-  --layout-background-color: #{$white};
-  --layout-box-shadow-color: #{rgba($gray-50, 0.25)};
+  --layout-body-background-color: #{$gray-10};
 
   --switch-background-color: #{$gray-30};
   --switch-handle-background-color: #{$white};
   --switch-handle-box-shadow-color: #{rgba($gray-50, 0.5)};
 
   --color-menu-item-active-background-color: #{$gray-10};
+
+  --color-swatch-item-color: #{$gray-100};
+  --color-swatch-item-dark-color: #{$white};
 }
 
 [data-theme='dark'] {
   --body-color: #{$white};
   --body-color-soft: #{$gray-60};
-  --body-background-color: #{$gray-90};
+  --body-background-color: #{$gray-100};
 
   --button-color: #{$gray-100};
   --button-background-color: #{$white};
 
-  --layout-background-color: #{$gray-100};
-  --layout-box-shadow-color: transparent;
+  --layout-body-background-color: #{$gray-90};
 
   --switch-background-color: #{$gray-80};
   --switch-handle-background-color: #{$gray-100};
   --switch-handle-box-shadow-color: transparent;
 
   --color-menu-item-active-background-color: #{$gray-90};
+
+  --color-swatch-item-color: #{$gray-100};
+  --color-swatch-item-dark-color: #{$white};
 }

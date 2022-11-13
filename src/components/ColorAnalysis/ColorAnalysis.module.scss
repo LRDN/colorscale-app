@@ -1,0 +1,24 @@
+.colorAnalysis {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-normal);
+
+  &__item {
+    display: flex;
+
+    &:not(:last-child) {
+      margin-right: var(--spacing-x-large);
+    }
+  }
+
+  &__label {
+    opacity: 0.75;
+  }
+
+  &__value {
+    width: var(--spacing-x-large);
+    margin-left: var(--spacing-small);
+  }
+}
