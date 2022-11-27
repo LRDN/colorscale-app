@@ -1,0 +1,33 @@
+.collapse {
+  position: relative;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    stroke-width: 0.1875rem;
+    margin-right: var(--spacing-xx-small);
+    transition: transform var(--transition-duration-fast);
+
+    &--active {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__name {
+    margin-right: auto;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__label {
+    color: var(--body-color-soft);
+  }
+}
