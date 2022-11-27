@@ -20,6 +20,21 @@
   &__sidebar {
     display: flex;
     width: 24rem;
+    box-sizing: border-box;
     flex-direction: column;
+    padding: var(--spacing-x-large);
+
+    &:last-child {
+      overflow-y: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    & > *:not(:first-child) {
+      margin-top: var(--spacing-x-large);
+    }
   }
 }
