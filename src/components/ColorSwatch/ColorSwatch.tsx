@@ -12,6 +12,7 @@ type ComponentProps = HTMLProps<HTMLDivElement>
 
 const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
   const { colors, activeColor } = useContext(ColorContext)
+  const { addMinorSteps, startAtZero } = colors[activeColor].steps
   const colorSwatchClassName = clsx(className, styles.colorSwatch)
   const colorScale = generateColorScale(colors[activeColor]).map((color) =>
     colord(color),
@@ -21,7 +22,10 @@ const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
     <div className={colorSwatchClassName} {...props}>
       {colorScale.map((color: Colord, index: number) => {
         const hexColor = color.toHex()
-        const colorStep = (index + 1) * 10
+        const colorStep = addMinorSteps
+          ? (index + (startAtZero ? 0 : 1)) * 5 + (startAtZero ? 0 : 5)
+          : (index + (startAtZero ? 0 : 1)) * 10
+
         const itemClassName = clsx(styles.colorSwatch__item, {
           [styles['colorSwatch__item--dark']]: color.isDark(),
         })
