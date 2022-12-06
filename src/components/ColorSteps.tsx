@@ -6,6 +6,7 @@ import SwitchGroup from '@components/SwitchGroup'
 import { ColorContext } from '@context/ColorContext'
 import type { FC, FormEvent, HTMLProps } from 'react'
 import type { ColorProps } from '@context/ColorContext'
+import { getTotalColorSteps } from '@helpers/generateColorScale'
 
 type ComponentProps = HTMLProps<HTMLDivElement>
 type PartialColorSteps = Partial<ColorProps['steps']>
@@ -13,6 +14,7 @@ type PartialColorSteps = Partial<ColorProps['steps']>
 const ColorSteps: FC<ComponentProps> = ({ ...props }) => {
   const { colors, setColors, activeColor } = useContext(ColorContext)
   const { majorSteps, addMinorSteps, startAtZero } = colors[activeColor].steps
+  const totalSteps = getTotalColorSteps(colors[activeColor])
 
   const setSteps = (values: PartialColorSteps) => {
     setColors((colors: ColorProps[]) => {
@@ -31,7 +33,7 @@ const ColorSteps: FC<ComponentProps> = ({ ...props }) => {
   }
 
   return (
-    <Collapse name="Steps" label={`${majorSteps} Total Steps`} {...props}>
+    <Collapse name="Steps" label={`${totalSteps} Total Steps`} {...props}>
       <Slider
         onChange={handleChange.majorSteps}
         valueRange={[3, 20]}
