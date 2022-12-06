@@ -1,0 +1,12 @@
+.switchGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius-large);
+  background-color: var(--switch-group-background-color);
+
+  & > *:not(:first-child) {
+    margin-top: var(--spacing-medium);
+  }
+}

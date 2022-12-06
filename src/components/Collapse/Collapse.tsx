@@ -33,7 +33,11 @@ const Collapse: FC<ComponentProps> = ({
         <div className={styles.collapse__name}>{name}</div>
         <div className={styles.collapse__label}>{label}</div>
       </header>
-      <AnimateHeight height={isActive ? 'auto' : 0} duration={250}>
+      <AnimateHeight
+        contentClassName={styles.collapse__body}
+        height={isActive ? 'auto' : 0}
+        duration={250}
+      >
         {children}
       </AnimateHeight>
     </div>

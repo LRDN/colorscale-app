@@ -1,6 +1,5 @@
 .collapse {
   position: relative;
-  overflow: hidden;
 
   &__header {
     display: flex;
@@ -29,5 +28,9 @@
 
   &__label {
     color: var(--body-color-soft);
+  }
+
+  &__body > * {
+    margin-top: var(--spacing-medium);
   }
 }
