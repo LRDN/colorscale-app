@@ -11,7 +11,7 @@ import { getTotalColorSteps } from '@helpers/generateColorScale'
 type ComponentProps = HTMLProps<HTMLDivElement>
 type PartialColorSteps = Partial<ColorProps['steps']>
 
-const ColorSteps: FC<ComponentProps> = ({ ...props }) => {
+const ColorStepControl: FC<ComponentProps> = ({ ...props }) => {
   const { colors, setColors, activeColor } = useContext(ColorContext)
   const { majorSteps, addMinorSteps, startAtZero } = colors[activeColor].steps
   const totalSteps = getTotalColorSteps(colors[activeColor])
@@ -56,4 +56,4 @@ const ColorSteps: FC<ComponentProps> = ({ ...props }) => {
   )
 }
 
-export default ColorSteps
+export default ColorStepControl
