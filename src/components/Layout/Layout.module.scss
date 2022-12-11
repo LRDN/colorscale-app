@@ -10,7 +10,7 @@
     overflow-y: auto;
     scrollbar-width: none;
     padding: var(--spacing-x-large);
-    background-color: var(--layout-body-background-color);
+    background-color: var(--body-background-color-soft);
 
     &::-webkit-scrollbar {
       display: none;

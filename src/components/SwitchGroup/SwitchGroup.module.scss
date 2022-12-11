@@ -4,7 +4,7 @@
   align-items: flex-start;
   padding: var(--spacing-medium);
   border-radius: var(--border-radius-large);
-  background-color: var(--switch-group-background-color);
+  background-color: var(--body-background-color-soft);
 
   & > *:not(:first-child) {
     margin-top: var(--spacing-medium);
