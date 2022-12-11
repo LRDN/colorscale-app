@@ -44,12 +44,12 @@ const ColorStepControl: FC<ComponentProps> = ({ ...props }) => {
         <Switch
           onChange={handleChange.addMinorSteps}
           labelAfter="Add Minor Steps"
-          checked={addMinorSteps}
+          checked={!!addMinorSteps}
         />
         <Switch
           onChange={handleChange.startAtZero}
           labelAfter="Start at Zero"
-          checked={startAtZero}
+          checked={!!startAtZero}
         />
       </SwitchGroup>
     </Collapse>
