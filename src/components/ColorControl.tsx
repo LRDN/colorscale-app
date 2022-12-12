@@ -3,6 +3,7 @@ import Slider from '@components/Slider'
 import type { FC, HTMLProps } from 'react'
 import Collapse from '@components/Collapse'
 import CurveInput from '@components/CurveInput'
+import CurveEditor from '@components/CurveEditor'
 import { ColorContext } from '@context/ColorContext'
 import type { ColorProps } from '@context/ColorContext'
 
@@ -53,6 +54,10 @@ const ColorControl: FC<ComponentProps> = ({ channel, ...props }) => {
         label="End"
       />
       <CurveInput
+        onChange={handleChange.curveValue}
+        value={colors[activeColor][channel].curve}
+      />
+      <CurveEditor
         onChange={handleChange.curveValue}
         value={colors[activeColor][channel].curve}
       />
