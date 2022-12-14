@@ -14,6 +14,9 @@
   --switch-handle-background-color: #{$white};
   --switch-handle-box-shadow-color: #{rgba($gray-50, 0.5)};
 
+  --modal-background-color: #{rgba($gray-100, 0.875)};
+  --modal-content-background-color: #{$white};
+
   --color-swatch-item-color: #{$gray-100};
   --color-swatch-item-dark-color: #{$white};
 }
@@ -31,6 +34,9 @@
   --switch-background-color: #{$gray-80};
   --switch-handle-background-color: #{$gray-100};
   --switch-handle-box-shadow-color: transparent;
+
+  --modal-background-color: #{rgba($gray-90, 0.875)};
+  --modal-content-background-color: #{$gray-100};
 
   --color-swatch-item-color: #{$gray-100};
   --color-swatch-item-dark-color: #{$white};
