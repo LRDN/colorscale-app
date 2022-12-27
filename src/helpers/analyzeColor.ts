@@ -10,12 +10,13 @@ const analyzeColor = (color: AnyColor | Colord) => {
   }
 
   const hsvColor = color.toHsv()
+  const contrast = color.contrast()
 
   return {
     hue: hsvColor.h + '°',
     saturation: hsvColor.s + '%',
     brightness: hsvColor.v + '%',
-    contrast: color.contrast() + ':1',
+    contrast: contrast + ':1',
   }
 }
 
