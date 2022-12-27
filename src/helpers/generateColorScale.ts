@@ -2,6 +2,14 @@ import bezier from 'bezier-easing'
 import type { HsvColor } from 'colord'
 import type { ColorProps } from '@context/ColorContext'
 
+const getColorStep = (color: ColorProps, index: number) => {
+  const { addMinorSteps, startAtZero } = color.steps
+
+  return addMinorSteps
+    ? (index + (startAtZero ? 0 : 1)) * 5 + (startAtZero ? 0 : 5)
+    : (index + (startAtZero ? 0 : 1)) * 10
+}
+
 const getTotalColorSteps = (color: ColorProps) => {
   const { majorSteps, addMinorSteps, startAtZero } = color.steps
 
@@ -38,5 +46,5 @@ const generateColorScale = (color: ColorProps) => {
   return colorScale
 }
 
-export { getTotalColorSteps }
+export { getColorStep, getTotalColorSteps }
 export default generateColorScale
