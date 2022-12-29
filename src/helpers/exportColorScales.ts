@@ -1,21 +1,14 @@
-import { colord } from 'colord'
-import type { HsvColor } from 'colord'
 import getColorName from '@helpers/getColorName'
+import convertColor from '@helpers/convertColor'
 import type { ColorProps } from '@context/ColorContext'
 import { getColorStep } from '@helpers/generateColorScale'
 import generateColorScale from '@helpers/generateColorScale'
 
-const colorConverters = {
-  hex: (color: HsvColor) => colord(color).toHex(),
-  rgb: (color: HsvColor) => colord(color).toRgbString(),
-  hsl: (color: HsvColor) => colord(color).toHslString(),
-}
-
 const exportFormats = ['css', 'scss', 'json'] as const
-const colorModels = Object.keys(colorConverters)
+const colorModels = ['hex', 'rgb', 'hsl', 'hwb'] as const
 
 export type ExportFormat = typeof exportFormats[number]
-export type ColorModel = keyof typeof colorConverters
+export type ColorModel = typeof colorModels[number]
 
 const getColorScaleName = (color: ColorProps) => {
   const steps = { majorSteps: 3 }
@@ -27,7 +20,7 @@ const getColorScales = (colors: ColorProps[], colorModel: ColorModel) => {
   const colorScales = colors.map((color) => {
     const colorName = getColorScaleName(color)
     const colorScale = generateColorScale(color).map((hsvColor, index) => {
-      return [getColorStep(color, index), colorConverters[colorModel](hsvColor)]
+      return [getColorStep(color, index), convertColor(hsvColor, colorModel)]
     })
 
     return [colorName, Object.fromEntries(colorScale)]
@@ -44,19 +37,19 @@ const exportColorScales = (
   const colorScales = getColorScales(colors, colorModel)
 
   if (exportFormat.endsWith('css')) {
-    const colorPrefix = exportFormat === 'css' ? '--' : '$'
-    const colorScaleEntries = Object.entries(colorScales)
-
-    return colorScaleEntries
+    const isCSS = exportFormat === 'css'
+    const colorPrefix = isCSS ? '  --' : '$'
+    const colorScaleExport = Object.entries(colorScales)
       .map(([colorName, colorScale]) => {
-        const colorEntries = Object.entries(colorScale!)
-        const colors = colorEntries.map(([colorStep, color]) => {
+        const colors = Object.entries(colorScale!).map(([colorStep, color]) => {
           return `${colorPrefix}${colorName}-${colorStep}: ${color};`
         })
 
         return colors.join('\n')
       })
       .join('\n\n')
+
+    return isCSS ? `:root {\n${colorScaleExport}\n}` : colorScaleExport
   }
 
   return JSON.stringify(colorScales, undefined, 2)

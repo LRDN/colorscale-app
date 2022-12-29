@@ -4,8 +4,10 @@ import { useEffect } from 'react'
 import type { FC, HTMLProps, MouseEvent } from 'react'
 import styles from './Modal.module.scss'
 
+export type CloseEvent = MouseEvent | KeyboardEvent
+
 type ComponentProps = HTMLProps<HTMLDivElement> & {
-  onClose: (event: MouseEvent | KeyboardEvent) => void
+  onClose: (event: CloseEvent) => void
   title: string
 }
 

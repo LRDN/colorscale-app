@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import Button from '@components/Button'
 import type { FC, HTMLProps } from 'react'
 import { Plus, Download } from 'react-feather'
+import ColorExport from '@components/ColorExport'
 import { ColorContext } from '@context/ColorContext'
 import ColorMenuItem from '@components/ColorMenuItem'
 import type { ColorProps } from '@context/ColorContext'
@@ -14,8 +15,9 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
   const { colors, setColors, activeColor, setActiveColor } =
     useContext(ColorContext)
 
-  const [colorCount, setColorCount] = useState(colors.length)
+  const [isColorExportActive, setColorExportActive] = useState(false)
   const colorMenuClassName = clsx(className, styles.colorMenu)
+  const [colorCount, setColorCount] = useState(colors.length)
   const colorMenuBodyRef = useRef<HTMLDivElement>(null)
 
   const handleAddClick = () => {
@@ -26,6 +28,10 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
       const color = { ...previousColor, hue: { ...previousColor.hue, range } }
       return [...colors, color]
     })
+  }
+
+  const toggleColorExport = () => {
+    setColorExportActive(!isColorExportActive)
   }
 
   useEffect(() => {
@@ -61,7 +67,8 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
         })}
       </div>
       <footer className={styles.colorMenu__footer}>
-        <Button>
+        {isColorExportActive && <ColorExport onClose={toggleColorExport} />}
+        <Button onClick={toggleColorExport}>
           <Download /> Export Colors
         </Button>
       </footer>

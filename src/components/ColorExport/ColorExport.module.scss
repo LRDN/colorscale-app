@@ -1,0 +1,47 @@
+.colorExport {
+  display: grid;
+  gap: var(--spacing-medium);
+  grid-template-columns: 1fr 1fr;
+
+  & > *:nth-child(3),
+  & > *:nth-child(4) {
+    grid-column: span 2 / auto;
+  }
+
+  &__output {
+    position: relative;
+
+    pre {
+      overflow: auto;
+      height: 18rem;
+      margin: 0;
+      padding: var(--spacing-medium);
+      background-color: var(--body-background-color-soft);
+      border-radius: var(--border-radius-large);
+      box-sizing: border-box;
+    }
+  }
+
+  &__copyButton {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    right: var(--spacing-small);
+    bottom: var(--spacing-small);
+    color: var(--body-color-soft);
+    padding: var(--spacing-x-small);
+    transition: transform var(--transition-duration-fast);
+
+    &:active {
+      transition: none;
+      transform: scale(1.25);
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}
