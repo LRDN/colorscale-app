@@ -3,11 +3,11 @@ import { colord } from 'colord'
 import { useContext } from 'react'
 import type { Colord } from 'colord'
 import type { FC, HTMLProps } from 'react'
-import getColorName from '@helpers/getColorName'
 import { ColorContext } from '@context/ColorContext'
 import ColorAnalysis from '@components/ColorAnalysis'
 import { getColorStep } from '@helpers/generateColorScale'
 import generateColorScale from '@helpers/generateColorScale'
+import { getColorScaleName } from '@helpers/exportColorScales'
 import styles from './ColorSwatch.module.scss'
 
 type ComponentProps = HTMLProps<HTMLDivElement>
@@ -19,15 +19,11 @@ const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
     colord(color),
   )
 
-  const steps = { majorSteps: 3 }
-  const color = { ...colors[activeColor], steps }
-  const colorNameScale = generateColorScale(color)
-
   return (
     <div className={colorSwatchClassName} {...props}>
       <header className={styles.colorSwatch__header}>
         <div className={styles.colorSwatch__name}>
-          {getColorName(colorNameScale[1])}
+          {getColorScaleName(colors[activeColor])}
         </div>
       </header>
       <div className={styles.colorSwatch__body}>
