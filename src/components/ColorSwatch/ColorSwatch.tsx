@@ -3,6 +3,7 @@ import { colord } from 'colord'
 import { useContext } from 'react'
 import type { Colord } from 'colord'
 import type { FC, HTMLProps } from 'react'
+import getColorName from '@helpers/getColorName'
 import { ColorContext } from '@context/ColorContext'
 import ColorAnalysis from '@components/ColorAnalysis'
 import { getColorStep } from '@helpers/generateColorScale'
@@ -18,27 +19,38 @@ const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
     colord(color),
   )
 
+  const steps = { majorSteps: 3 }
+  const color = { ...colors[activeColor], steps }
+  const colorNameScale = generateColorScale(color)
+
   return (
     <div className={colorSwatchClassName} {...props}>
-      {colorScale.map((color: Colord, index: number) => {
-        const hexColor = color.toHex()
-        const colorStep = getColorStep(colors[activeColor], index)
-        const itemClassName = clsx(styles.colorSwatch__item, {
-          [styles['colorSwatch__item--dark']]: color.isDark(),
-        })
+      <header className={styles.colorSwatch__header}>
+        <div className={styles.colorSwatch__name}>
+          {getColorName(colorNameScale[1])}
+        </div>
+      </header>
+      <div className={styles.colorSwatch__body}>
+        {colorScale.map((color: Colord, index: number) => {
+          const hexColor = color.toHex()
+          const colorStep = getColorStep(colors[activeColor], index)
+          const itemClassName = clsx(styles.colorSwatch__item, {
+            [styles['colorSwatch__item--dark']]: color.isDark(),
+          })
 
-        return (
-          <div
-            style={{ backgroundColor: hexColor }}
-            className={itemClassName}
-            key={index}
-          >
-            <strong>{colorStep}</strong>
-            <ColorAnalysis color={color} />
-            {hexColor}
-          </div>
-        )
-      })}
+          return (
+            <div
+              style={{ backgroundColor: hexColor }}
+              className={itemClassName}
+              key={index}
+            >
+              <strong>{colorStep}</strong>
+              <ColorAnalysis color={color} />
+              {hexColor}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

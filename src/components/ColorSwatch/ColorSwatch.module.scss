@@ -1,9 +1,26 @@
 .colorSwatch {
-  overflow: hidden;
   display: flex;
   min-height: 100%;
   flex-direction: column;
-  border-radius: var(--border-radius-x-large);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--spacing-x-large) var(--spacing-x-large);
+  }
+
+  &__name {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__body {
+    overflow: hidden;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    border-radius: var(--border-radius-x-large);
+  }
 
   &__item {
     position: relative;
