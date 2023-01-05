@@ -7,6 +7,7 @@ type ProviderProps = {
 }
 
 export type ColorProps = {
+  name?: string
   steps: {
     majorSteps: number
     addMinorSteps?: boolean

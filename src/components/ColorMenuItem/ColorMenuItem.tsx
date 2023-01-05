@@ -20,6 +20,7 @@ const ColorMenuItem: FC<ComponentProps> = ({
   isActiveColor,
   ...props
 }) => {
+  const colorName = color.name || getColorScaleName(color)
   const { setColors, activeColor } = useContext(ColorContext)
   const colorScale = generateColorScale({ ...color, steps: { majorSteps: 3 } })
   const previewColors = colorScale.map((color) => colord(color).toHex())
@@ -44,7 +45,7 @@ const ColorMenuItem: FC<ComponentProps> = ({
         ))}
       </div>
       <div className={styles.colorMenuItem__name}>
-        {getColorScaleName(color)}
+        {colorName}
         <div className={styles.colorMenuItem__label}>
           {previewColors[0]} to {previewColors[previewColors.length - 1]}
         </div>

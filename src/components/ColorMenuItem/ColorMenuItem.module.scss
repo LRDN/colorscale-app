@@ -16,11 +16,16 @@
     display: grid;
     width: 3rem;
     height: 3rem;
+    flex-shrink: 0;
     border-radius: var(--border-radius-medium);
   }
 
   &__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     margin-left: var(--spacing-medium);
+    padding-right: var(--spacing-xx-large);
     line-height: var(--line-height-x-large);
   }
 

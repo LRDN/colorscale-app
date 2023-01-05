@@ -5,13 +5,28 @@
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-medium);
     padding: 0 var(--spacing-x-large) var(--spacing-x-large);
   }
 
   &__name {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-bold);
+  }
+
+  &__editButton {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    gap: var(--spacing-xx-small);
+    color: var(--body-color-soft);
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
   }
 
   &__body {

@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import { X } from 'react-feather'
 import { useEffect } from 'react'
-import type { FC, HTMLProps, MouseEvent } from 'react'
+import type { FC, FormEvent, HTMLProps, MouseEvent } from 'react'
 import styles from './Modal.module.scss'
 
-export type CloseEvent = MouseEvent | KeyboardEvent
+export type CloseEvent = FormEvent | KeyboardEvent | MouseEvent
 
 type ComponentProps = HTMLProps<HTMLDivElement> & {
   onClose: (event: CloseEvent) => void

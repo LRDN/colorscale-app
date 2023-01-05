@@ -18,7 +18,7 @@ const getColorScaleName = (color: ColorProps) => {
 
 const getColorScales = (colors: ColorProps[], colorModel: ColorModel) => {
   const colorScales = colors.map((color) => {
-    const colorName = getColorScaleName(color)
+    const colorName = color.name || getColorScaleName(color)
     const colorKey = colorName.toLowerCase().replace(/\s/g, '-')
     const colorScale = generateColorScale(color).map((hsvColor, index) => {
       return [getColorStep(color, index), convertColor(hsvColor, colorModel)]
