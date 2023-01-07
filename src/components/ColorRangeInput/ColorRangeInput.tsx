@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { colord } from 'colord'
+import { hex } from 'color-convert'
 import { ColorContext } from '@context/ColorContext'
 import type { FC, FormEvent, HTMLProps } from 'react'
 import { useContext, useEffect, useState } from 'react'
@@ -21,10 +21,10 @@ const ColorRangeInput: FC<ComponentProps> = ({
 
   const setColorRange = (value: string, index: number) => {
     setColors((colors: ColorProps[]) => {
-      const hsvColor = colord(value).toHsv()
-      colors[activeColor].hue.range[index] = hsvColor.h
-      colors[activeColor].saturation.range[index] = hsvColor.s
-      colors[activeColor].brightness.range[index] = hsvColor.v
+      const [h, s, v] = hex.hsv.raw(value)
+      colors[activeColor].hue.range[index] = h
+      colors[activeColor].saturation.range[index] = s
+      colors[activeColor].brightness.range[index] = v
       return [...colors]
     })
   }

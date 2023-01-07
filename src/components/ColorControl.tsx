@@ -15,7 +15,8 @@ type PartialColorChannel = Partial<ColorProps[ComponentProps['channel']]>
 
 const ColorControl: FC<ComponentProps> = ({ channel, ...props }) => {
   const { colors, setColors, activeColor } = useContext(ColorContext)
-  const [startValue, endValue] = colors[activeColor][channel].range
+  const rangeValues = colors[activeColor][channel].range
+  const [startValue, endValue] = rangeValues.map(Math.round)
   const valueRange = [0, channel === 'hue' ? 360 : 100]
   const labelSign = channel === 'hue' ? '°' : '%'
 
