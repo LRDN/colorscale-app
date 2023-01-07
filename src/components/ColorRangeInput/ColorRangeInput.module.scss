@@ -1,0 +1,14 @@
+.colorRangeInput {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+
+  &__label {
+    color: var(--body-color-soft);
+  }
+
+  &__input {
+    width: 7ch;
+    text-align: center;
+  }
+}
