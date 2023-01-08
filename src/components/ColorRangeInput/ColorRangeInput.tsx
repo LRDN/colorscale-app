@@ -1,9 +1,11 @@
 import clsx from 'clsx'
 import { hex } from 'color-convert'
+import { Repeat } from 'react-feather'
 import { ColorContext } from '@context/ColorContext'
 import type { FC, FormEvent, HTMLProps } from 'react'
-import { useContext, useEffect, useState } from 'react'
 import type { ColorProps } from '@context/ColorContext'
+import invertColorScale from '@helpers/invertColorScale'
+import { Fragment, useContext, useEffect, useState } from 'react'
 import styles from './ColorRangeInput.module.scss'
 
 type ComponentProps = HTMLProps<HTMLDivElement> & {
@@ -18,6 +20,13 @@ const ColorRangeInput: FC<ComponentProps> = ({
   const colorRangeInputClassName = clsx(className, styles.colorRangeInput)
   const [inputValues, setInputValues] = useState([...colorRange])
   const { setColors, activeColor } = useContext(ColorContext)
+
+  const handleInvertClick = () => {
+    setColors((colors: ColorProps[]) => {
+      colors[activeColor] = invertColorScale(colors[activeColor])
+      return [...colors]
+    })
+  }
 
   const setColorRange = (value: string, index: number) => {
     setColors((colors: ColorProps[]) => {
@@ -49,15 +58,24 @@ const ColorRangeInput: FC<ComponentProps> = ({
         }
 
         return (
-          <input
-            className={styles.colorRangeInput__input}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={inputValue}
-            maxLength={7}
-            key={index}
-            type="text"
-          />
+          <Fragment key={index}>
+            {!!index && (
+              <div
+                className={styles.colorRangeInput__invertButton}
+                onClick={handleInvertClick}
+              >
+                <Repeat />
+              </div>
+            )}
+            <input
+              className={styles.colorRangeInput__input}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={inputValue}
+              maxLength={7}
+              type="text"
+            />
+          </Fragment>
         )
       })}
     </div>

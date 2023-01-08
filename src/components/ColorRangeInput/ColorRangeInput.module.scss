@@ -1,14 +1,34 @@
 .colorRangeInput {
   display: flex;
   align-items: center;
-  gap: var(--spacing-medium);
 
   &__label {
     color: var(--body-color-soft);
+    margin-right: var(--spacing-medium);
   }
 
   &__input {
     width: 7ch;
     text-align: center;
+  }
+
+  &__invertButton {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xx-small);
+    margin: 0 var(--spacing-xx-small);
+    transition: transform var(--transition-duration-fast);
+
+    &:active {
+      transition: none;
+      transform: scale(1.25);
+    }
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
   }
 }
