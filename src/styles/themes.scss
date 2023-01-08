@@ -5,6 +5,7 @@
   --body-color-soft: #{$gray-50};
   --body-background-color: #{$white};
   --body-background-color-soft: #{$gray-10};
+  --body-box-shadow-color: #{rgba($gray-50, 0.25)};
 
   --button-color: #{$white};
   --button-background-color: #{$gray-100};
@@ -26,6 +27,7 @@
   --body-color-soft: #{$gray-60};
   --body-background-color: #{$gray-100};
   --body-background-color-soft: #{$gray-90};
+  --body-box-shadow-color: transparent;
 
   --button-color: #{$gray-100};
   --button-background-color: #{$white};

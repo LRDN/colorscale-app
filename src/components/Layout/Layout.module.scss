@@ -18,11 +18,13 @@
   }
 
   &__sidebar {
+    position: relative;
     display: flex;
     width: 24rem;
     box-sizing: border-box;
     flex-direction: column;
     padding: var(--spacing-x-large);
+    box-shadow: var(--box-shadow-large) var(--body-box-shadow-color);
 
     &:last-child {
       overflow-y: auto;
