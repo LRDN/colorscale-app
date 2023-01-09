@@ -28,16 +28,6 @@ const ColorRangeInput: FC<ComponentProps> = ({
     })
   }
 
-  const setColorRange = (value: string, index: number) => {
-    setColors((colors: ColorProps[]) => {
-      const [h, s, v] = hex.hsv.raw(value)
-      colors[activeColor].hue.range[index] = h
-      colors[activeColor].saturation.range[index] = s
-      colors[activeColor].brightness.range[index] = v
-      return [...colors]
-    })
-  }
-
   const handleBlur = () => setInputValues([...colorRange])
   useEffect(() => setInputValues([...colorRange]), [colorRange])
 
@@ -49,11 +39,26 @@ const ColorRangeInput: FC<ComponentProps> = ({
           const { value } = event.currentTarget
 
           if (value.match(/^(#[0-9a-f]{0,6})?$/i)) {
-            if (value.length === 7) setColorRange(value, index)
             setInputValues((inputValues: string[]) => {
               inputValues[index] = value
               return [...inputValues]
             })
+
+            if (value.length === 7) {
+              setColors((colors: ColorProps[]) => {
+                const hsvColor = hex.hsv.raw(value)
+
+                for (const [i, channel] of (
+                  ['hue', 'saturation', 'brightness'] as const
+                ).entries()) {
+                  const { range } = colors[activeColor][channel]
+                  colors[activeColor][channel].range = [...range]
+                  colors[activeColor][channel].range[index] = hsvColor[i]
+                }
+
+                return [...colors]
+              })
+            }
           }
         }
 
