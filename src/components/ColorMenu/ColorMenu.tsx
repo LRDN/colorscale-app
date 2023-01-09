@@ -24,8 +24,9 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
     setActiveColor(colors.length)
     setColors((colors: ColorProps[]) => {
       const previousColor = colors[colors.length - 1]
-      const range = previousColor.hue.range.map((range) => range + 360 / 10)
-      const color = { ...previousColor, hue: { ...previousColor.hue, range } }
+      const { steps, hue, saturation, brightness } = previousColor
+      const range = hue.range.map((range) => (range + 360 / 10) % 360)
+      const color = { steps, hue: { ...hue, range }, saturation, brightness }
       return [...colors, color]
     })
   }
