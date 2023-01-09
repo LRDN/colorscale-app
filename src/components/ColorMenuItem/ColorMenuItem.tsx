@@ -21,7 +21,7 @@ const ColorMenuItem: FC<ComponentProps> = ({
   ...props
 }) => {
   const colorName = color.name || getColorScaleName(color)
-  const { setColors, activeColor } = useContext(ColorContext)
+  const { colors, setColors, activeColor } = useContext(ColorContext)
   const colorScale = generateColorScale({ ...color, steps: { majorSteps: 3 } })
   const previewColors = colorScale.map((color) => colord(color).toHex())
   const colorMenuItemClassName = clsx(className, styles.colorMenuItem, {
@@ -50,7 +50,7 @@ const ColorMenuItem: FC<ComponentProps> = ({
           {previewColors[0]} to {previewColors[previewColors.length - 1]}
         </div>
       </div>
-      {isActiveColor && !!activeColor && (
+      {isActiveColor && colors.length > 1 && (
         <div
           className={styles.colorMenuItem__deleteButton}
           onClick={handleDeleteClick}
