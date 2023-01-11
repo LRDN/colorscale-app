@@ -6,13 +6,10 @@ const offsetColor = (color: AnyColor | Colord, offset: number) => {
     color = colord(color)
   }
 
-  const isColorDark = color.isDark()
   const { h, s, v } = color.toHsv()
-  const hsvColor: HsvColor = {
-    h,
-    s: s && s + (isColorDark ? -1 : 1) * offset,
-    v: v + (isColorDark ? 1 : -1) * offset,
-  }
+  const hsvColor: HsvColor = color.isDark()
+    ? { h, s: s && s - offset, v: v + offset }
+    : { h, s: s && s + offset, v: v - offset }
 
   return hsvColor
 }

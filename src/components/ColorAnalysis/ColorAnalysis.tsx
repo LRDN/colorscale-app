@@ -19,13 +19,10 @@ const ColorAnalysis: FC<ComponentProps> = ({ color, className, ...props }) => {
     <div className={colorAnalysisClassName} {...props}>
       {Object.entries(analyzedColor).map(([name, value]) => (
         <div className={styles.colorAnalysis__item} key={name}>
-          <div
-            className={styles.colorAnalysis__label}
-            style={{ color: labelColor }}
-          >
+          <span style={{ color: labelColor }}>
             {name[0].toUpperCase() + name.slice(1)}
-          </div>
-          <div className={styles.colorAnalysis__value}>{value}</div>
+          </span>
+          <span className={styles.colorAnalysis__value}>{value}</span>
         </div>
       ))}
     </div>

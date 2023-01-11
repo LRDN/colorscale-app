@@ -2,23 +2,16 @@
   position: absolute;
   display: flex;
   left: 50%;
+  gap: var(--spacing-large);
   transform: translateX(-50%);
   font-size: var(--font-size-normal);
 
   &__item {
     display: flex;
-
-    &:not(:last-child) {
-      margin-right: var(--spacing-x-large);
-    }
-  }
-
-  &__label {
-    opacity: 0.75;
+    gap: var(--spacing-x-small);
   }
 
   &__value {
-    width: var(--spacing-x-large);
-    margin-left: var(--spacing-small);
+    width: 4ch;
   }
 }
