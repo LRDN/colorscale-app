@@ -7,6 +7,13 @@
   align-items: center;
   justify-content: center;
   background-color: var(--modal-background-color);
+  animation: fadeModal var(--transition-duration-fast);
+
+  @keyframes fadeModal {
+    0% {
+      opacity: 0;
+    }
+  }
 
   &__content {
     width: 40rem;
@@ -14,6 +21,13 @@
     padding: var(--spacing-x-large);
     border-radius: var(--border-radius-x-large);
     background-color: var(--modal-content-background-color);
+    animation: scaleContent var(--transition-duration-medium);
+
+    @keyframes scaleContent {
+      0% {
+        transform: scale(0.925);
+      }
+    }
   }
 
   &__header {
