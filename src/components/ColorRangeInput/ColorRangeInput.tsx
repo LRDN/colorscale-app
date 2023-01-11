@@ -51,8 +51,11 @@ const ColorRangeInput: FC<ComponentProps> = ({
                 for (const [i, channel] of (
                   ['hue', 'saturation', 'brightness'] as const
                 ).entries()) {
-                  const { range } = colors[activeColor][channel]
-                  colors[activeColor][channel].range = [...range]
+                  colors[activeColor][channel] = {
+                    ...colors[activeColor][channel],
+                    range: [...colors[activeColor][channel].range],
+                  }
+
                   colors[activeColor][channel].range[index] = hsvColor[i]
                 }
 
