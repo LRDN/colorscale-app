@@ -1,6 +1,5 @@
 .curveEditor {
   position: relative;
-  aspect-ratio: 1 / 1;
   padding: var(--spacing-x-large);
   border-radius: var(--border-radius-large);
   background-color: var(--body-background-color-soft);
@@ -14,11 +13,16 @@
     stroke-linecap: round;
     stroke-width: 0.125rem;
     stroke: var(--body-color-soft);
+  }
 
-    path:last-child {
-      stroke-width: 0.25rem;
-      stroke: currentColor;
-    }
+  &__grid {
+    stroke-width: 0.0625rem;
+    opacity: 0.25;
+  }
+
+  &__curve {
+    stroke-width: 0.25rem;
+    stroke: currentColor;
   }
 
   &__interaction {

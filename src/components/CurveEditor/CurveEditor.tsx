@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { FC, HTMLProps } from 'react'
-import { useEffect, useState } from 'react'
 import Interaction from '@components/Interaction'
+import { Fragment, useEffect, useState } from 'react'
 import type { Position } from '@components/Interaction'
 import styles from './CurveEditor.module.scss'
 
@@ -18,6 +18,7 @@ const CurveEditor: FC<ComponentProps> = ({
 }) => {
   const [activePoint, setActivePoint] = useState<number | null>(null)
   const curveEditorClassName = clsx(className, styles.curveEditor)
+  const pathProps = { vectorEffect: 'non-scaling-stroke' }
   const [x1, y1, x2, y2] = value.map((value, index) => {
     return (index % 2 ? 1 - value : value) * 100
   })
@@ -39,11 +40,20 @@ const CurveEditor: FC<ComponentProps> = ({
   return (
     <div className={curveEditorClassName} {...props}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <path d={`M 0,100 L ${x1},${y1}`} vectorEffect="non-scaling-stroke" />
-        <path d={`M 100,0 L ${x2},${y2}`} vectorEffect="non-scaling-stroke" />
+        <g className={styles.curveEditor__grid}>
+          {[25, 50, 75].map((point, index) => (
+            <Fragment key={index}>
+              <path d={`M ${point},0 L ${point},100`} {...pathProps} />
+              <path d={`M 0,${point} L 100,${point}`} {...pathProps} />
+            </Fragment>
+          ))}
+        </g>
+        <path d={`M 0,100 L ${x1},${y1}`} {...pathProps} />
+        <path d={`M 100,0 L ${x2},${y2}`} {...pathProps} />
         <path
           d={`M 0,100 C ${x1},${y1} ${x2},${y2} 100,0`}
-          vectorEffect="non-scaling-stroke"
+          className={styles.curveEditor__curve}
+          {...pathProps}
         />
       </svg>
       <Interaction
