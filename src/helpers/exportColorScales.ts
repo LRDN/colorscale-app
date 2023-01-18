@@ -4,7 +4,7 @@ import type { ColorProps } from '@context/ColorContext'
 import { getColorStep } from '@helpers/generateColorScale'
 import generateColorScale from '@helpers/generateColorScale'
 
-const exportFormats = ['css', 'scss', 'json'] as const
+const exportFormats = ['css', 'scss', 'json', 'svg'] as const
 const colorModels = ['hex', 'rgb', 'hsl', 'hwb'] as const
 
 export type ExportFormat = typeof exportFormats[number]
@@ -65,8 +65,18 @@ const exportColorScales = (
     }
     case 'css': {
       const formatColor = ([name, color]: string[]) => `--${name}: ${color};`
-      const colors = formatColorScales(colorScales, formatColor, 2)
-      return `:root {\n${colors.join('\n\n')}\n}`
+      const colors = formatColorScales(colorScales, formatColor, 2).join('\n\n')
+      return `:root {\n${colors}\n}`
+    }
+    case 'svg': {
+      const formatColor = ([name, color]: string[], [x, y]: number[]) => {
+        const [x1, y1, x2, y2] = [x, y, x + 1, y + 1].map((xy) => xy * 100)
+        const d = `M ${x1},${y1} L ${x2},${y1} ${x2},${y2} ${x1},${y2}`
+        return `<path id="${name}" fill="${color}" d="${d}" />`
+      }
+
+      const colors = formatColorScales(colorScales, formatColor, 2).join('\n')
+      return `<svg xmlns="http://www.w3.org/2000/svg">\n${colors}\n</svg>`
     }
   }
 
