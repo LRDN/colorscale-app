@@ -16,13 +16,11 @@ type ComponentProps = HTMLProps<HTMLDivElement>
 
 const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
   const { colors, activeColor } = useContext(ColorContext)
+  const colorScale = generateColorScale(colors[activeColor])
   const colorSwatchClassName = clsx(className, styles.colorSwatch)
   const [isNameChangeActive, setNameChangeActive] = useState(false)
-  const colorScale = generateColorScale(colors[activeColor]).map((color) =>
-    colord(color).toHex(),
-  )
-
-  const colorRange = [colorScale[0], colorScale[colorScale.length - 1]]
+  const hexColors = colorScale.map((color) => colord(color).toHex())
+  const colorRange = [hexColors[0], hexColors[hexColors.length - 1]]
   const colorName = getColorScaleName(colors[activeColor])
   const name = colors[activeColor].name || colorName
 
@@ -46,7 +44,7 @@ const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
         <ColorRangeInput colorRange={colorRange} />
       </header>
       <div className={styles.colorSwatch__body}>
-        {colorScale.map((hexColor, index) => {
+        {hexColors.map((hexColor, index) => {
           const isDark = colord(hexColor).isDark()
           const colorStep = getColorStep(colors[activeColor], index)
           const itemClassName = clsx(styles.colorSwatch__item, {
@@ -60,7 +58,7 @@ const ColorSwatch: FC<ComponentProps> = ({ className, ...props }) => {
               key={index}
             >
               <strong>{colorStep}</strong>
-              <ColorAnalysis color={hexColor} />
+              <ColorAnalysis color={colorScale[index]} />
               {hexColor}
             </div>
           )

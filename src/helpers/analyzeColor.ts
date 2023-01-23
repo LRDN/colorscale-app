@@ -1,22 +1,24 @@
-import type { AnyColor } from 'colord'
 import a11yPlugin from 'colord/plugins/a11y'
 import { Colord, colord, extend } from 'colord'
+import type { AnyColor, HsvColor } from 'colord'
 
 extend([a11yPlugin])
 
 const analyzeColor = (color: AnyColor | Colord) => {
+  const { h, s, v } = color as HsvColor
+
   if (!(color instanceof Colord)) {
     color = colord(color)
   }
 
-  const hsvColor = color.toHsv()
-  const contrast = color.contrast()
+  const isHsvColor = [h, s, v].every((value) => !isNaN(value))
+  const hsvColor = isHsvColor ? { h, s, v } : color.toHsv()
 
   return {
-    hue: hsvColor.h + '°',
-    saturation: hsvColor.s + '%',
-    brightness: hsvColor.v + '%',
-    contrast: contrast + ':1',
+    hue: Math.round(hsvColor.h) + '°',
+    saturation: Math.round(hsvColor.s) + '%',
+    brightness: Math.round(hsvColor.v) + '%',
+    contrast: color.contrast() + ':1',
   }
 }
 
