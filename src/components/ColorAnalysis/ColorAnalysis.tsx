@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { colord } from 'colord'
 import type { FC, HTMLProps } from 'react'
 import type { AnyColor, Colord } from 'colord'
 import offsetColor from '@helpers/offsetColor'
@@ -12,7 +11,7 @@ type ComponentProps = Omit<HTMLProps<HTMLDivElement>, 'color'> & {
 
 const ColorAnalysis: FC<ComponentProps> = ({ color, className, ...props }) => {
   const colorAnalysisClassName = clsx(className, styles.colorAnalysis)
-  const labelColor = colord(offsetColor(color, 50)).toHex()
+  const labelColor = offsetColor(color, 0.5).toHex()
   const analyzedColor = analyzeColor(color)
 
   return (

@@ -1,17 +1,17 @@
+import type { AnyColor } from 'colord'
 import { Colord, colord } from 'colord'
-import type { AnyColor, HsvColor } from 'colord'
 
 const offsetColor = (color: AnyColor | Colord, offset: number) => {
   if (!(color instanceof Colord)) {
     color = colord(color)
   }
 
-  const { h, s, v } = color.toHsv()
-  const hsvColor: HsvColor = color.isDark()
-    ? { h, s: s && s - offset, v: v + offset }
-    : { h, s: s && s + offset, v: v - offset }
+  const { r, g, b } = color.toRgb()
+  const sign = color.isDark() ? 1 : -1
+  const value = sign * Math.round(offset * 255)
+  const rgbColor = { r: r + value, g: g + value, b: b + value }
 
-  return hsvColor
+  return colord(rgbColor).hue(color.hue())
 }
 
 export default offsetColor
