@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
+import CurveSelect from '@components/CurveSelect'
 import type { FC, FormEvent, HTMLProps } from 'react'
 import styles from './CurveInput.module.scss'
 
@@ -34,7 +35,7 @@ const CurveInput: FC<ComponentProps> = ({
 
   return (
     <div className={curveInputClassName} {...props}>
-      Bezier Curve
+      <CurveSelect value={value} onChange={onChange} />
       {inputValues.map((inputValue: string, index: number) => {
         const handleBlur = () => setInputValue(value[index].toString(), index)
         const handleChange = (event: FormEvent<HTMLInputElement>) => {

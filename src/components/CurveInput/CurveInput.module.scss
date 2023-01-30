@@ -5,10 +5,6 @@
   &__input {
     width: 10%;
     text-align: right;
-    margin-left: auto;
-
-    &:not(:first-child) {
-      margin-left: var(--spacing-x-small);
-    }
+    margin-left: var(--spacing-x-small);
   }
 }
