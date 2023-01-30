@@ -5,7 +5,7 @@ import { Colord, colord, extend } from 'colord'
 
 extend([namesPlugin])
 
-type ColorName = keyof typeof colorNames
+export type ColorName = keyof typeof colorNames
 
 const getColorName = (color: AnyColor | Colord) => {
   if (!(color instanceof Colord)) {
