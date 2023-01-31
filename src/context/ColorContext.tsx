@@ -13,9 +13,9 @@ export type ColorProps = {
     addMinorSteps?: boolean
     startAtZero?: boolean
   }
-  hue: { range: number[]; curve: number[] }
-  saturation: { range: number[]; curve: number[] }
-  brightness: { range: number[]; curve: number[] }
+  hue: { range: number[]; curve: number[]; curveName?: string }
+  saturation: { range: number[]; curve: number[]; curveName?: string }
+  brightness: { range: number[]; curve: number[]; curveName?: string }
 }
 
 const ColorContext = createContext<Record<string, any>>({})
@@ -27,8 +27,8 @@ const ColorProvider: FC<ProviderProps> = ({ children }) => {
     brightness: { range: [100, 40], curve: [0.75, 0.25, 0.25, 0.75] },
   }
 
-  const [activeColor, setActiveColor] = useState(0)
   const [colors, setColors] = useLocalStorage('colors', [defaultColor])
+  const [activeColor, setActiveColor] = useState(0)
 
   useMemo(() => {
     if (!colors[activeColor]) {

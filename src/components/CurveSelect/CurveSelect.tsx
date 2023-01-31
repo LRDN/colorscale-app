@@ -10,7 +10,7 @@ type ComponentProps = Omit<
   HTMLProps<HTMLSelectElement>,
   'onChange' | 'value'
 > & {
-  onChange: (value: number[]) => void
+  onChange: (value?: number[]) => void
   value: number[]
 }
 
@@ -22,7 +22,6 @@ const CurveSelect: FC<ComponentProps> = ({
 }) => {
   const curveSelectClassName = clsx(className, styles.curveSelect)
   const curveName = getCurveName(value) || 'customCurve'
-  const curveNames = Object.keys(curvePresets)
 
   const handleChange = (event: FormEvent<HTMLSelectElement>) => {
     const curveName = event.currentTarget.value as CurveName
@@ -42,8 +41,8 @@ const CurveSelect: FC<ComponentProps> = ({
         value={curveName}
         {...props}
       >
-        {['customCurve', ...curveNames].map((curveName, index) => (
-          <option key={curveName} value={curveName} disabled={!index}>
+        {['customCurve', ...Object.keys(curvePresets)].map((curveName) => (
+          <option key={curveName} value={curveName}>
             {formatCurveName(curveName)}
           </option>
         ))}

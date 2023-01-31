@@ -5,7 +5,7 @@ import type { FC, FormEvent, HTMLProps } from 'react'
 import styles from './CurveInput.module.scss'
 
 type ComponentProps = Omit<HTMLProps<HTMLDivElement>, 'onChange' | 'value'> & {
-  onChange: (value: number[]) => void
+  onChange: (value?: number[]) => void
   value: number[]
 }
 
