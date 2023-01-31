@@ -1,5 +1,7 @@
 import bezier from 'bezier-easing'
 import type { HsvColor } from 'colord'
+import curvePresets from '@constants/curvePresets'
+import type { CurveName } from '@helpers/getCurveName'
 import type { ColorProps } from '@context/ColorContext'
 
 const getColorStep = (color: ColorProps, index: number) => {
@@ -18,29 +20,25 @@ const getTotalColorSteps = (color: ColorProps) => {
     : (startAtZero ? 1 : 0) + majorSteps
 }
 
-const calculateColorChannel = (
-  channelProps: { range: number[]; curve: number[] },
-  stepValue: number,
-) => {
-  const [start, end] = channelProps.range
-  const [x1, y1, x2, y2] = channelProps.curve
-  const bezierCurve = bezier(x1, y1, x2, y2)
-
-  return bezierCurve(stepValue) * (end - start) + start
-}
-
 const generateColorScale = (color: ColorProps) => {
+  const { hue, saturation, brightness } = color
   const totalSteps = getTotalColorSteps(color)
   const colorScale: HsvColor[] = []
 
+  const channels = [hue, saturation, brightness].map(
+    ({ range, curve, curveName }) => {
+      const [x1, y1, x2, y2] = curvePresets[curveName as CurveName] || curve
+      return { bezierCurve: bezier(x1, y1, x2, y2), range }
+    },
+  )
+
   for (let i = 0; i < totalSteps; i++) {
     const stepValue = i / (totalSteps - 1)
-
-    colorScale.push({
-      h: calculateColorChannel(color.hue, stepValue),
-      s: calculateColorChannel(color.saturation, stepValue),
-      v: calculateColorChannel(color.brightness, stepValue),
+    const [h, s, v] = channels.map(({ bezierCurve, range }) => {
+      return bezierCurve(stepValue) * (range[1] - range[0]) + range[0]
     })
+
+    colorScale.push({ h, s, v })
   }
 
   return colorScale
