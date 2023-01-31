@@ -14,7 +14,7 @@ type ComponentProps = HTMLProps<HTMLDivElement> & {
   channel: 'hue' | 'saturation' | 'brightness'
 }
 
-type PartialColorChannel = Partial<ColorProps[ComponentProps['channel']]>
+type ChannelProps = ColorProps[ComponentProps['channel']]
 
 const ColorControl: FC<ComponentProps> = ({ channel, ...props }) => {
   const { colors, setColors, activeColor } = useContext(ColorContext)
@@ -24,10 +24,10 @@ const ColorControl: FC<ComponentProps> = ({ channel, ...props }) => {
   const valueRange = [0, channel === 'hue' ? 360 : 100]
   const labelSign = channel === 'hue' ? '°' : '%'
 
-  const setChannel = (values: PartialColorChannel) => {
+  const setChannel = (channelProps: Partial<ChannelProps>) => {
     setColors((colors: ColorProps[]) => {
-      values = { ...colors[activeColor][channel], ...values }
-      colors[activeColor] = { ...colors[activeColor], [channel]: values }
+      channelProps = { ...colors[activeColor][channel], ...channelProps }
+      colors[activeColor] = { ...colors[activeColor], [channel]: channelProps }
       return [...colors]
     })
   }
