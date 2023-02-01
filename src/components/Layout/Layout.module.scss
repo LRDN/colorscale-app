@@ -7,6 +7,7 @@
 
   &__body {
     flex-grow: 1;
+    outline: none;
     overflow-y: auto;
     scrollbar-width: none;
     padding: var(--spacing-x-large);
@@ -27,6 +28,7 @@
     box-shadow: var(--box-shadow-large) var(--body-box-shadow-color);
 
     &:last-child {
+      outline: none;
       overflow-y: auto;
       scrollbar-width: none;
 
