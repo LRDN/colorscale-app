@@ -23,10 +23,9 @@ const Footer: FC<ComponentProps> = ({ className, ...props }) => {
         <a href="https://github.com/feathericons/feather">Feather Icons</a> and{' '}
         <a href="https://github.com/omgovich/colord">Colord</a>
         <br />
-        Inspired by <a href="https://lyft-colorbox.herokuapp.com">
-          ColorBox
-        </a>{' '}
-        by Lyft Design
+        Inspired by{' '}
+        <a href="https://github.com/lyft/coloralgorithm">ColorBox</a> by Lyft
+        Design
       </div>
       <Switch
         labelBefore={<Sun className={styles.footer__icon} />}
