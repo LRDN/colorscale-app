@@ -48,6 +48,7 @@ const CurveInput: FC<ComponentProps> = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={inputValue}
+            maxLength={4}
             key={index}
             type="text"
           />

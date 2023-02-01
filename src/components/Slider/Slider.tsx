@@ -21,6 +21,7 @@ const Slider: FC<ComponentProps> = ({
   ...props
 }) => {
   const [minValue, maxValue] = valueRange
+  const maxLength = maxValue.toString().length
   const sliderClassName = clsx(className, styles.slider)
   const containerClassName = clsx(styles.slider__container)
   const [inputValue, setInputValue] = useState(value.toString())
@@ -52,6 +53,7 @@ const Slider: FC<ComponentProps> = ({
         className={styles.slider__input}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
+        maxLength={maxLength}
         value={inputValue}
         type="text"
       />
