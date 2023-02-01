@@ -9,33 +9,33 @@
     "prettier": "prettier --ignore-path .gitignore -c ."
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.13",
+    "@fontsource/inter": "^4.5.15",
     "bezier-easing": "^2.1.0",
     "clsx": "^1.2.1",
     "color-convert": "^2.0.1",
     "colord": "^2.9.3",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
-    "react-animate-height": "^3.0.5",
+    "react-animate-height": "^3.1.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10"
   },
   "devDependencies": {
     "@types/color-convert": "^2.0.0",
     "@types/html-minifier-terser": "^7.0.0",
-    "@types/node": "^18.8.3",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.1.0",
-    "autoprefixer": "^10.4.12",
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-config-react-app": "^7.0.1",
-    "html-minifier-terser": "^7.0.0",
-    "prettier": "^2.7.1",
-    "sass": "^1.55.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.6",
-    "vite-tsconfig-paths": "^3.5.1"
+    "html-minifier-terser": "^7.1.0",
+    "prettier": "^2.8.3",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.5",
+    "vite": "^3.2.5",
+    "vite-tsconfig-paths": "^3.6.0"
   }
 }
