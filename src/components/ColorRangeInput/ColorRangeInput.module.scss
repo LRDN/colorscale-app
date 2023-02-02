@@ -5,6 +5,10 @@
   &__label {
     color: var(--body-color-soft);
     margin-right: var(--spacing-medium);
+
+    @media (max-width: 1680px) {
+      display: none;
+    }
   }
 
   &__input {

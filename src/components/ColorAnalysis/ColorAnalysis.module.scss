@@ -9,6 +9,18 @@
   &__item {
     display: flex;
     gap: var(--spacing-x-small);
+
+    &:last-child {
+      @media (max-width: 1680px) {
+        display: none;
+      }
+    }
+  }
+
+  &__label span {
+    @media (max-width: 1440px) {
+      display: none;
+    }
   }
 
   &__value {

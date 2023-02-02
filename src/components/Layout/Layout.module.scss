@@ -21,7 +21,10 @@
   &__sidebar {
     position: relative;
     display: flex;
-    width: 24rem;
+    width: 20%;
+    flex-shrink: 0;
+    min-width: 22rem;
+    max-width: 26rem;
     box-sizing: border-box;
     flex-direction: column;
     padding: var(--spacing-x-large);

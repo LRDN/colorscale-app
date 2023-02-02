@@ -1,5 +1,6 @@
 .colorSwatch {
   display: flex;
+  min-width: 32rem;
   min-height: 100%;
   flex-direction: column;
 
@@ -12,6 +13,9 @@
   }
 
   &__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-bold);
   }
@@ -22,10 +26,12 @@
     user-select: none;
     margin-right: auto;
     align-items: center;
+    white-space: nowrap;
     gap: var(--spacing-xx-small);
     color: var(--body-color-soft);
 
     svg {
+      flex-shrink: 0;
       width: 1.125rem;
       height: 1.125rem;
     }
