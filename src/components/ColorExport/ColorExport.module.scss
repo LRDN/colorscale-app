@@ -8,6 +8,10 @@
     grid-column: span 2 / auto;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   &__output {
     position: relative;
     width: 100%;
