@@ -47,7 +47,9 @@ const CurveSelect: FC<ComponentProps> = ({
           </option>
         ))}
       </select>
-      {formatCurveName(curveName)}
+      <div className={styles.curveSelect__name}>
+        {formatCurveName(curveName)}
+      </div>
       <ChevronDown className={styles.curveSelect__icon} />
     </div>
   )

@@ -4,7 +4,7 @@
 
   &__label {
     color: var(--body-color-soft);
-    margin-right: var(--spacing-medium);
+    margin-right: var(--spacing-small);
 
     @media (max-width: 1680px) {
       display: none;
@@ -12,8 +12,18 @@
   }
 
   &__input {
-    width: 7ch;
+    width: 4.5rem;
     text-align: center;
+    line-height: var(--line-height-x-large);
+    border-radius: var(--border-radius-small);
+
+    &:focus {
+      background-color: var(--input-focus-background-color);
+    }
+
+    &:last-of-type {
+      margin-right: calc(0rem - var(--spacing-xx-small));
+    }
   }
 
   &__invertButton {
@@ -22,7 +32,6 @@
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xx-small);
-    margin: 0 var(--spacing-xx-small);
     transition: transform var(--transition-duration-fast);
 
     &:active {

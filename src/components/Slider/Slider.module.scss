@@ -1,15 +1,22 @@
 .slider {
   display: flex;
+  height: 1.125rem;
   align-items: center;
+  gap: var(--spacing-large);
 
-  &__label {
-    width: 20%;
+  &__label,
+  &__input {
+    width: 2.5rem;
   }
 
   &__input {
-    width: 10%;
-    margin-left: 10%;
     text-align: center;
+    line-height: var(--line-height-x-large);
+    border-radius: var(--border-radius-small);
+
+    &:focus {
+      background-color: var(--input-focus-background-color-soft);
+    }
   }
 
   &__container {

@@ -1,5 +1,6 @@
 .curveSelect {
   position: relative;
+  overflow: hidden;
   display: flex;
   margin-right: auto;
   align-items: center;
@@ -12,9 +13,16 @@
     height: 100%;
   }
 
+  &__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   &__icon {
     width: 1rem;
     height: 1rem;
+    flex-shrink: 0;
     margin-top: 0.125rem;
   }
 }
