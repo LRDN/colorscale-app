@@ -39,6 +39,8 @@
     color: var(--body-color-soft);
     padding: var(--spacing-x-small);
     transition: transform var(--transition-duration-fast);
+    background-color: var(--body-background-color-soft);
+    border-radius: var(--border-radius-medium);
 
     &:active {
       transition: none;
