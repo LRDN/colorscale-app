@@ -22,6 +22,13 @@ const defaultOptions = {
   colorModel: colorModels[0] as ColorModel,
 }
 
+const mediaTypes = {
+  json: 'application/json',
+  svg: 'image/svg+xml',
+  scss: 'text/x-scss',
+  css: 'text/css',
+}
+
 const ColorExport: FC<ComponentProps> = ({ onClose, className, ...props }) => {
   const [options, setOptions] = useLocalStorage('options', defaultOptions)
   const colorExportClassName = clsx(className, styles.colorExport)
@@ -32,7 +39,11 @@ const ColorExport: FC<ComponentProps> = ({ onClose, className, ...props }) => {
   )
 
   const downloadProps = {
-    href: URL.createObjectURL(new Blob([colorExportOutput])),
+    href: URL.createObjectURL(
+      new Blob([colorExportOutput], {
+        type: mediaTypes[options.exportFormat as ExportFormat],
+      }),
+    ),
     download: 'colors.' + options.exportFormat,
   }
 

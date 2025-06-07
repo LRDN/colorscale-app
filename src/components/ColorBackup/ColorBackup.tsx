@@ -13,8 +13,10 @@ const ColorBackup: FC<ComponentProps> = ({ className, ...props }) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const downloadProps = {
-    href: URL.createObjectURL(new Blob([JSON.stringify(colors)])),
-    download: 'color-backup.json',
+    href: URL.createObjectURL(
+      new Blob([JSON.stringify(colors)], { type: 'application/json' }),
+    ),
+    download: 'colors-backup.json',
   }
 
   const handleRestore = (event: ChangeEvent<HTMLInputElement>) => {
