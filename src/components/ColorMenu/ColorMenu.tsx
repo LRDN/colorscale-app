@@ -3,6 +3,7 @@ import Button from '@components/Button'
 import type { FC, HTMLProps } from 'react'
 import { Plus, Download } from 'react-feather'
 import ColorExport from '@components/ColorExport'
+import ColorBackup from '@components/ColorBackup'
 import { ColorContext } from '@context/ColorContext'
 import ColorMenuItem from '@components/ColorMenuItem'
 import type { ColorProps } from '@context/ColorContext'
@@ -72,6 +73,7 @@ const ColorMenu: FC<ComponentProps> = ({ className, ...props }) => {
         <Button onClick={toggleColorExport}>
           <Download /> Export Colors
         </Button>
+        <ColorBackup />
       </footer>
     </div>
   )

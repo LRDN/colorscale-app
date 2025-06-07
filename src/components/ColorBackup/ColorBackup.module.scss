@@ -1,0 +1,31 @@
+.colorBackup {
+  display: grid;
+  align-items: center;
+  gap: var(--spacing-medium);
+  grid-template-columns: 1fr 1fr;
+
+  &__button {
+    display: flex;
+    height: 3rem;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    justify-content: center;
+    color: var(--body-color-soft);
+    padding: var(--spacing-small) var(--spacing-medium);
+    background-color: var(--body-background-color-soft);
+    border-radius: var(--border-radius-large);
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: var(--spacing-x-small);
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}

@@ -43,6 +43,9 @@
   }
 
   &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
     margin-top: var(--spacing-medium);
   }
 }
