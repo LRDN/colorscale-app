@@ -23,12 +23,12 @@ const Interaction: FC<ComponentProps> = ({
     (event: PointerEvent | React.PointerEvent<HTMLDivElement>) => {
       const interactionRect = interactionRef.current!.getBoundingClientRect()
       const { top, left, width, height } = interactionRect
-      const { pageXOffset, pageYOffset } = window
+      const { scrollX, scrollY } = window
       const { pageX, pageY } = event
 
       const position = {
-        top: ((pageY - (top + pageYOffset)) / height) * 100,
-        left: ((pageX - (left + pageXOffset)) / width) * 100,
+        top: ((pageY - (top + scrollY)) / height) * 100,
+        left: ((pageX - (left + scrollX)) / width) * 100,
       }
 
       return clampPosition
